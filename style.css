@@ -17,8 +17,8 @@ main {
 
 #slides-container {
     background-color: #efefef;
-    width: 80vw;
-    height: 50vw;
+    width: 800px;
+    height: 500px;
     display: flex;
     justify-content: center;
     align-items: center;

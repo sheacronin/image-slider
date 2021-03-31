@@ -10,6 +10,9 @@ const slider = (() => {
     let currentImgIndex = 0;
     const prevBtn = document.querySelector('#prev-btn');
     const nextBtn = document.querySelector('#next-btn');
+    const playBtn = document.querySelector('#play-btn');
+    playBtn.addEventListener('click', toggleAutoPlay);
+    let isAutoPlaying = false;
     function changeSlide(destination) {
         if (destination === 'next') {
             animateSlide('right');
@@ -26,6 +29,8 @@ const slider = (() => {
         } else {
             animateSlide('up');
             imgEl.src = destination.src;
+            // Set current index to the image we've switched to.
+            currentImgIndex = images.indexOf(destination);
         }
     }
     function animateSlide(direction) {
@@ -34,7 +39,21 @@ const slider = (() => {
             imgEl.classList.remove('swipe-' + direction);
         }, 401);
     }
-    return { images, changeSlide, nextBtn, prevBtn };
+    function autoPlay() {
+        console.log('Auto playing: ' + isAutoPlaying);
+        if (isAutoPlaying) {
+            changeSlide('next');
+            setTimeout(() => {
+                autoPlay();
+            }, 5000);
+        }
+    }
+    function toggleAutoPlay() {
+        isAutoPlaying = !isAutoPlaying;
+        playBtn.textContent = isAutoPlaying ? '▶' : '||';
+        if (isAutoPlaying) autoPlay();
+    }
+    return { images, changeSlide, nextBtn, prevBtn, toggleAutoPlay };
 })();
 
 slider.nextBtn.addEventListener('click', () => slider.changeSlide('next'));
@@ -73,3 +92,5 @@ slider.images.forEach((image) => {
     dot.addEventListener('click', () => slider.changeSlide(image));
     navBar.appendChild(dot);
 });
+
+slider.toggleAutoPlay();
