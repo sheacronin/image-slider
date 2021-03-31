@@ -30,6 +30,51 @@ main {
     height: 90%;
 }
 
+.swipe-left {
+    animation: swipe-left 400ms ease-out;
+}
+
+@keyframes swipe-left {
+    from {
+        transform: translateX(100px);
+        filter: blur(5px);
+    }
+    to {
+        transform: translateX(0);
+        filter: blur(0);
+    }
+}
+
+.swipe-right {
+    animation: swipe-right 400ms ease-out;
+}
+
+@keyframes swipe-right {
+    from {
+        transform: translateX(-100px);
+        filter: blur(5px);
+    }
+    to {
+        transform: translateX(0);
+        filter: blur(0);
+    }
+}
+
+.swipe-up {
+    animation: swipe-up 400ms ease-out;
+}
+
+@keyframes swipe-up {
+    from {
+        transform: translateY(70px);
+        filter: blur(5px);
+    }
+    to {
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
 #nav-bar {
     height: 50px;
     width: 100%;

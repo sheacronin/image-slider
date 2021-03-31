@@ -4,28 +4,38 @@
 //     }
 // }
 
-const slider = {
-    imgEl: document.querySelector('#slide'),
-    images: [],
-    currentImgIndex: 0,
-    prevBtn: document.querySelector('#prev-btn'),
-    nextBtn: document.querySelector('#next-btn'),
-    changeSlide(destination) {
+const slider = (() => {
+    const imgEl = document.querySelector('#slide');
+    const images = [];
+    let currentImgIndex = 0;
+    const prevBtn = document.querySelector('#prev-btn');
+    const nextBtn = document.querySelector('#next-btn');
+    function changeSlide(destination) {
         if (destination === 'next') {
-            if (this.currentImgIndex === this.images.length - 1) {
-                this.currentImgIndex = -1;
+            animateSlide('right');
+            if (currentImgIndex === images.length - 1) {
+                currentImgIndex = -1;
             }
-            this.imgEl.src = this.images[++this.currentImgIndex].src;
+            imgEl.src = images[++currentImgIndex].src;
         } else if (destination === 'prev') {
-            if (this.currentImgIndex === 0) {
-                this.currentImgIndex = this.images.length;
+            animateSlide('left');
+            if (currentImgIndex === 0) {
+                currentImgIndex = images.length;
             }
-            this.imgEl.src = this.images[--this.currentImgIndex].src;
+            imgEl.src = images[--currentImgIndex].src;
         } else {
-            this.imgEl.src = destination.src;
+            animateSlide('up');
+            imgEl.src = destination.src;
         }
-    },
-};
+    }
+    function animateSlide(direction) {
+        imgEl.classList.add('swipe-' + direction);
+        setTimeout(() => {
+            imgEl.classList.remove('swipe-' + direction);
+        }, 401);
+    }
+    return { images, changeSlide, nextBtn, prevBtn };
+})();
 
 slider.nextBtn.addEventListener('click', () => slider.changeSlide('next'));
 slider.prevBtn.addEventListener('click', () => slider.changeSlide('prev'));
