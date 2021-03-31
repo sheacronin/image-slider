@@ -10,17 +10,19 @@ const slider = {
     currentImgIndex: 0,
     prevBtn: document.querySelector('#prev-btn'),
     nextBtn: document.querySelector('#next-btn'),
-    changeSlide(direction) {
-        if (direction === 'next') {
+    changeSlide(destination) {
+        if (destination === 'next') {
             if (this.currentImgIndex === this.images.length - 1) {
                 this.currentImgIndex = -1;
             }
             this.imgEl.src = this.images[++this.currentImgIndex].src;
-        } else if (direction === 'prev') {
+        } else if (destination === 'prev') {
             if (this.currentImgIndex === 0) {
                 this.currentImgIndex = this.images.length;
             }
             this.imgEl.src = this.images[--this.currentImgIndex].src;
+        } else {
+            this.imgEl.src = destination.src;
         }
     },
 };
@@ -53,3 +55,11 @@ const winter = Img(
     './i/winter.jpeg',
     'A white fox with yellow eyes stands in a snowy landscape'
 );
+
+const navBar = document.querySelector('#nav-bar');
+slider.images.forEach((image) => {
+    const dot = document.createElement('button');
+    dot.classList.add('nav-dot');
+    dot.addEventListener('click', () => slider.changeSlide(image));
+    navBar.appendChild(dot);
+});
