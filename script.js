@@ -1,9 +1,3 @@
-// class Img {
-//     constructor(src, altText) {
-//         (this.src = src), (this.altText = altText);
-//     }
-// }
-
 const slider = (() => {
     const imgEl = document.querySelector('#slide');
     const images = [];
@@ -59,31 +53,33 @@ const slider = (() => {
 slider.nextBtn.addEventListener('click', () => slider.changeSlide('next'));
 slider.prevBtn.addEventListener('click', () => slider.changeSlide('prev'));
 
-const Img = (src, altText) => {
-    const img = { src, altText };
-    slider.images.push(img);
-    return img;
-};
+const addImages = (() => {
+    const Img = (src, altText) => {
+        const img = { src, altText };
+        slider.images.push(img);
+        return img;
+    };
 
-const spring = Img(
-    './i/spring.jpeg',
-    'Low-angle view of a cherry blossom tree'
-);
+    const spring = Img(
+        './i/spring.jpeg',
+        'Low-angle view of a cherry blossom tree'
+    );
 
-const summer = Img(
-    './i/summer.jpeg',
-    'A colorful beach ball floating in a pool'
-);
+    const summer = Img(
+        './i/summer.jpeg',
+        'A colorful beach ball floating in a pool'
+    );
 
-const fall = Img(
-    './i/fall.jpeg',
-    'The sun shines through orange and red trees in a forest'
-);
+    const fall = Img(
+        './i/fall.jpeg',
+        'The sun shines through orange and red trees in a forest'
+    );
 
-const winter = Img(
-    './i/winter.jpeg',
-    'A white fox with yellow eyes stands in a snowy landscape'
-);
+    const winter = Img(
+        './i/winter.jpeg',
+        'A white fox with yellow eyes stands in a snowy landscape'
+    );
+})();
 
 const navBar = document.querySelector('#nav-bar');
 slider.images.forEach((image) => {
