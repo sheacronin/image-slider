@@ -1,56 +1,51 @@
 * {
-  padding: 0;
-  margin: 0;
+    padding: 0;
+    margin: 0;
 }
 
 body {
-  background-color: #2f4858;
+    background-color: #2f4858;
 }
 
 main {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #slides-container {
-  background-color: #efefef;
-  width: 80vw;
-  height: 50vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
+    background-color: #efefef;
+    width: 80vw;
+    height: 50vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
 #slide {
-  width: 93%;
-  height: 90%;
+    width: 93%;
+    height: 90%;
 }
 
 #controller {
-  height: 50px;
-  width: 100%;
-  background-color: #32766e;
-  position: absolute;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  opacity: 0.6;
-}
-
-#controller:hover {
-  opacity: 1;
+    height: 50px;
+    width: 100%;
+    background-color: #32766e;
+    position: absolute;
+    bottom: -50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 #controller button {
-  width: 40px;
-  height: 40px;
-  border: none;
-  margin: 0 5px;
-  font-size: 28px;
-  background-color: #568a68;
+    width: 40px;
+    height: 40px;
+    border: none;
+    margin: 0 5px;
+    font-size: 28px;
+    background-color: #568a68;
 }
