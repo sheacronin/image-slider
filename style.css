@@ -28,6 +28,7 @@ main {
 #slide {
     width: 93%;
     height: 90%;
+    object-fit: cover;
 }
 
 .swipe-left {
