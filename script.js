@@ -44,7 +44,7 @@ const slider = (() => {
     }
     function toggleAutoPlay() {
         isAutoPlaying = !isAutoPlaying;
-        playBtn.textContent = isAutoPlaying ? '▶' : '||';
+        playBtn.textContent = isAutoPlaying ? '||' : '▶';
         if (isAutoPlaying) autoPlay();
     }
     return { images, changeSlide, nextBtn, prevBtn, toggleAutoPlay };
