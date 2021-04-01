@@ -116,12 +116,7 @@ const slider = (() => {
         if (isAutoPlaying) autoPlay();
     }
 
-    return { images, changeSlide, toggleAutoPlay };
+    return { changeSlide, toggleAutoPlay };
 })();
-
-const navBar2 = {
-    el: document.querySelector('#nav-bar'),
-    dots: [],
-};
 
 slider.toggleAutoPlay();
