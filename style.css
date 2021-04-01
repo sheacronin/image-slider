@@ -5,6 +5,7 @@
 
 body {
     background-color: #2f4858;
+    font-family: sans-serif;
 }
 
 main {
@@ -23,6 +24,12 @@ main {
     justify-content: center;
     align-items: center;
     position: relative;
+}
+
+#slide-title {
+    position: absolute;
+    top: 5px;
+    color: #2f4858;
 }
 
 #slide {

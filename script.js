@@ -2,30 +2,37 @@ const slider = (() => {
     const imgEl = document.querySelector('#slide');
     const images = [];
     let currentImgIndex = 0;
+    const slideTitle = document.querySelector('#slide-title');
     const prevBtn = document.querySelector('#prev-btn');
     const nextBtn = document.querySelector('#next-btn');
     const playBtn = document.querySelector('#play-btn');
     playBtn.addEventListener('click', toggleAutoPlay);
     let isAutoPlaying = false;
     function changeSlide(destination) {
+        let newImage;
         if (destination === 'next') {
             animateSlide('right');
             if (currentImgIndex === images.length - 1) {
                 currentImgIndex = -1;
             }
-            imgEl.src = images[++currentImgIndex].src;
+            newImage = images[++currentImgIndex];
         } else if (destination === 'prev') {
             animateSlide('left');
             if (currentImgIndex === 0) {
                 currentImgIndex = images.length;
             }
-            imgEl.src = images[--currentImgIndex].src;
+            newImage = images[--currentImgIndex];
         } else {
             animateSlide('up');
-            imgEl.src = destination.src;
+            newImage = destination;
             // Set current index to the image we've switched to.
             currentImgIndex = images.indexOf(destination);
         }
+        imgEl.src = newImage.src;
+        changeSlideTitle(newImage.title);
+    }
+    function changeSlideTitle(title) {
+        slideTitle.textContent = title;
     }
     function animateSlide(direction) {
         imgEl.classList.add('swipe-' + direction);
@@ -34,7 +41,6 @@ const slider = (() => {
         }, 401);
     }
     function autoPlay() {
-        console.log('Auto playing: ' + isAutoPlaying);
         if (isAutoPlaying) {
             changeSlide('next');
             setTimeout(() => {
@@ -53,29 +59,26 @@ const slider = (() => {
 slider.nextBtn.addEventListener('click', () => slider.changeSlide('next'));
 slider.prevBtn.addEventListener('click', () => slider.changeSlide('prev'));
 
-const addImages = (() => {
-    const Img = (src, altText) => {
-        const img = { src, altText };
+(() => {
+    const Img = (title, src, altText) => {
+        const img = { title, src, altText };
         slider.images.push(img);
         return img;
     };
 
-    const spring = Img(
-        './i/spring.jpeg',
-        'Low-angle view of a cherry blossom tree'
-    );
-
-    const summer = Img(
+    Img('spring', './i/spring.jpeg', 'Low-angle view of a cherry blossom tree');
+    Img(
+        'summer',
         './i/summer.jpeg',
         'A colorful beach ball floating in a pool'
     );
-
-    const fall = Img(
+    Img(
+        'fall',
         './i/fall.jpeg',
         'The sun shines through orange and red trees in a forest'
     );
-
-    const winter = Img(
+    Img(
+        'winter',
         './i/winter.jpeg',
         'A white fox with yellow eyes stands in a snowy landscape'
     );
